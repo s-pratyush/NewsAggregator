@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - News Aggregator</title>
+
+    <link rel="stylesheet" href="https://res.cloudinary.com/dn1wzghh2/raw/upload/v1593776982/styles.min_ezx4ti.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+    <link rel="stylesheet" href="https://res.cloudinary.com/dn1wzghh2/raw/upload/v1593777014/bootstrap.min_rriga7.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+
+</style>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
+        <div class="container"><a class="navbar-brand" href="#">News Aggregator</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#Subscribe">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead text-center text-white">
+        <div class="masthead-content">
+            <div class="container">
+                <h1 class="masthead-heading mb-0">ALL Trending Headlines On One Page</h1>
+                <h2 class="masthead-subheading mb-0">From Your Favourite News Channels</h2><a class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="#News">Read Now</a></div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
+    <section id="News">
+    <footer class="py-5 bg-black">
+        <!-- Start: Boostrap Tabs --><div class="container py-5">
+  <!-- For demo purpose -->
+  <div class="row mb-5">
+    <div class="col-lg-8 text-white py-4 text-center mx-auto">
+      <h1 class="display-4">Global News</h1>
+    </div>
+  </div>
+  <!-- End -->
+
+
+  <div class="p-5 bg-white rounded shadow mb-5">
+    <!-- Rounded tabs -->
+    <ul id="myTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
+      <li class="nav-item flex-sm-fill">
+        <a id="home-tab" data-toggle="tab" href="#ot_" role="tab" aria-controls="home" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active">The Washington Post</a>
+      </li>
+      <li class="nav-item flex-sm-fill">
+        <a id="profile-tab" data-toggle="tab" href="#nyt_" role="tab" aria-controls="profile" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">The-Wall-Street-Journal</a>
+      </li>
+      <li class="nav-item flex-sm-fill">
+        <a id="contact-tab" data-toggle="tab" href="#bbc_" role="tab" aria-controls="contact" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">BBC</a>
+      </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div id="ot_" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+        {% for n in twp_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{n}} </p>
+        <hr>
+        {% endfor %}
+      </div>
+      <div id="nyt_" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
+        {% for n in nyt_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{n}} </p>
+        <hr>
+        {% endfor %}
+      </div>
+      <div id="bbc_" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
+        {% for n in bbc_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{n}} </p>
+        <hr>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- End rounded tabs -->
+  </div>
+
+
+  <div class="row mb-5">
+    <div class="col-lg-8 text-white py-4 text-center mx-auto">
+      <h1 class="display-4">National News</h1>
+    </div>
+  </div>
+
+  <div class="p-5 bg-white rounded shadow mb-5">
+    <!-- Rounded tabs -->
+    <ul id="myTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
+      <li class="nav-item flex-sm-fill">
+        <a id="home-tab" data-toggle="tab" href="#toi_" role="tab" aria-controls="home" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active">Times Of India</a>
+      </li>
+      <li class="nav-item flex-sm-fill">
+        <a id="profile-tab" data-toggle="tab" href="#ht_" role="tab" aria-controls="profile" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Hindustan Times</a>
+      </li>
+      <li class="nav-item flex-sm-fill">
+        <a id="contact-tab" data-toggle="tab" href="#th_" role="tab" aria-controls="contact" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">THE HINDU</a>
+      </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div id="toi_" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+        {% for n in toi_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{n}} </p>
+        <hr>
+        {% endfor %}
+
+      </div>
+      <div id="ht_" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
+        {% for ht_h in ht_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> -{{ht_h}} </p>
+        <hr>
+        {% endfor %}
+
+      </div>
+      <div id="th_" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
+        {% for th_h in th_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> -{{th_h}} </p>
+        <hr>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- End rounded tabs -->
+  </div>
+
+
+
+
+</div>
+
+        <!-- End: Boostrap Tabs -->
+
+
+    </footer>
+<div class="newsletter-subscribe" id="Subscribe">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Subscribe for our Newsletter</h2>
+            <p class="text-center">We promise to deliver quality journalism to our readers in a world where disinformation and propaganda are in abundance.</p>
+        </div>
+        <form class="form-inline" >
+            <div class="form-group"><input id="user_mail" type="email" class="form-control" name="email" placeholder="Your Email" /></div>
+            <div class="form-group"><button class="btn btn-primary" id="btnSend" >Subscribe </button></div>
+        </form>
+        <br>
+        <div class="container">
+            <p class="text-center text-black m-0 large">Copyright&nbsp;© News Aggregator 2020 <br> Designed By Pratyush Saxena</p>
+        </div>
+    </div>
+</div>
+  </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://res.cloudinary.com/dn1wzghh2/raw/upload/v1593803130/index_gr1rdl.js"></script>
+
+</body>
+
+</html>
