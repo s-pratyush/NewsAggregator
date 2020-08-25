@@ -21,4 +21,5 @@ from news import views
 urlpatterns = [
      path('admin/', admin.site.urls),
      path('', views.index, name = "home"),
+     url(r"^badges/", include("pinax.badges.urls", namespace="pinax_badges")),
 ]
