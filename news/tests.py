@@ -57,8 +57,9 @@ class fetchNewsTestCase(TestCase):
         self.assertEquals(response.status_code, 200)
 
 class storeNewsTestCase(TestCase):
-    key = "57f997f24e434970bdfbf94cbea816e6"
-    old_key = "98cb343e477940f181f5b38bdb9e3f9d"
+    def setUp(self):
+        self.key = settings.NEWS_API_KEY 
+        
     def test_store_nyt_news(self):
         url = "https://newsapi.org/v2/top-headlines?sources=the-wall-street-journal&apiKey={}".format(self.key)
         response = fetchNews(url)
