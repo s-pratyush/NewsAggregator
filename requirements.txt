@@ -7,5 +7,5 @@ Django
 fire
 pyflakes
 pylint
-
-
+html5lib
+requests_cache
