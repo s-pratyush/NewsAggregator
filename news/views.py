@@ -17,7 +17,7 @@ from .models import New
 logger = logging.getLogger(__name__)
 # logger.setLevel(logging.DEBUG)
 
-def fetchNews(url):
+def FetchNews(url):
     logger.info('news - fetching news for {}'.format(url))
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
@@ -102,7 +102,7 @@ def index(req):
         }
     ]
     for new in news:
-        response = fetchNews(new['url'])
+        response = FetchNews(new['url'])
         logger.debug("news - Status code of {} is {}".format(new['url'], response.status_code))
         saveNews(response, new['tag'])
     db_new = New.objects.all()
