@@ -11,11 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import logging.config
 
-NEWS_API_KEY = os.environ.get('NEWS_API_KEYS')
-
-LOGING_CONFIG = None 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -125,23 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-logging.config.dictConfig({
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'news.views': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-    },
-    'loggers': {
-        'root': {
-            'level': 'DEBUG',
-            'handlers': ['console']
-        }
-    }
-})
 

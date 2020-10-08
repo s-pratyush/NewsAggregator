@@ -62,20 +62,20 @@
     </ul>
     <div id="myTabContent" class="tab-content">
       <div id="ot_" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
-        {% for new in twp_news %}
-        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{new.title}} </p>
+        {% for n in twp_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{n}} </p>
         <hr>
         {% endfor %}
       </div>
       <div id="nyt_" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
-        {% for new in nyt_news %}
-        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{new.title}} </p>
+        {% for n in nyt_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{n}} </p>
         <hr>
         {% endfor %}
       </div>
       <div id="bbc_" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
-        {% for new in bbc_news %}
-        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{new.title}} </p>
+        {% for n in bbc_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{n}} </p>
         <hr>
         {% endfor %}
       </div>
@@ -105,22 +105,22 @@
     </ul>
     <div id="myTabContent" class="tab-content">
       <div id="toi_" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
-        {% for new in toi_news %}
-        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{new.title}} </p>
+        {% for n in toi_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> - {{n}} </p>
         <hr>
         {% endfor %}
 
       </div>
       <div id="ht_" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
-        {% for new in ht_news %}
-        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> -{{new.title}} </p>
+        {% for ht_h in ht_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> -{{ht_h}} </p>
         <hr>
         {% endfor %}
 
       </div>
       <div id="th_" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
-        {% for new in th_news %}
-        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> -{{new.title}} </p>
+        {% for th_h in th_news %}
+        <p class="text-muted"><i class="fa fa-newspaper-o" aria-hidden="true"></i> -{{th_h}} </p>
         <hr>
         {% endfor %}
       </div>
