@@ -2,6 +2,8 @@ from django.test import TestCase
 from django.conf import settings
 from .models import New
 from .views import FetchNews, saveNews
+from unittest.mock import patch, Mock
+
 # Create your tests here.
 
 class NewTestCase(TestCase):
@@ -32,32 +34,45 @@ class FetchNewsTestCase(TestCase):
     """
     def setUp(self):
         self.key = settings.NEWS_API_KEY
-    def test_fetch_news_return_a_200_response_for_nyt(self):
+
+    @patch('requests.get')
+    def test_fetch_news_return_a_200_response_for_nyt(self, mock_get):
+        mock_get.return_value.status_code = 200
         url = "https://newsapi.org/v2/top-headlines?sources=the-wall-street-journal&apiKey={}"
         response = FetchNews(url.format(self.key))
         self.assertEquals(response.status_code, 200)
 
-    def test_fetch_news_return_a_200_response_for_bbc(self):
+    @patch('requests.get')
+    def test_fetch_news_return_a_200_response_for_bbc(self, mock_get):
+        mock_get.return_value.status_code = 200
         url = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey={}"
         response = FetchNews(url.format(self.key))
         self.assertEquals(response.status_code, 200)
-
-    def test_fetch_news_return_a_200_response_for_toi(self):
+    
+    @patch('requests.get')
+    def test_fetch_news_return_a_200_response_for_toi(self, mock_get):
+        mock_get.return_value.status_code = 200
         url = "https://timesofindia.indiatimes.com/briefs"
         response = FetchNews(url)
         self.assertEquals(response.status_code, 200)
 
-    def test_fetch_news_return_a_200_response_for_ht(self):
+    @patch('requests.get')
+    def test_fetch_news_return_a_200_response_for_ht(self, mock_get):
+        mock_get.return_value.status_code = 200
         url = "https://www.hindustantimes.com/india-news/"
         response = FetchNews(url)
         self.assertEquals(response.status_code, 200)
 
-    def test_fetch_news_return_a_200_response_for_th(self):
+    @patch('requests.get')
+    def test_fetch_news_return_a_200_response_for_th(self, mock_get):
+        mock_get.return_value.status_code = 200
         url = "https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey={}"
         response = FetchNews(url.format(self.key))
         self.assertEquals(response.status_code, 200)
 
-    def test_fetch_news_return_a_200_response_for_(self):
+    @patch('requests.get')
+    def test_fetch_news_return_a_200_response_for_twt(self, mock_get):
+        mock_get.return_value.status_code = 200
         url = "https://newsapi.org/v2/top-headlines?sources=the-washington-times&apiKey={}"
         response = FetchNews(url.format(self.key))
         self.assertEquals(response.status_code, 200)
@@ -69,23 +84,32 @@ class StoreNewsTestCase(TestCase):
     def setUp(self):
         self.key = settings.NEWS_API_KEY 
 
-    def test_store_nyt_news(self):
+    @patch('requests.get')
+    def test_store_nyt_news(self, mock_get):
+        mock_get.return_value = Mock(status_code = 200)
+        mock_get.return_value.json.return_value = {"articles": [{"title": "hello world"}]}
         url = "https://newsapi.org/v2/top-headlines?sources=the-wall-street-journal&apiKey={}"
         response = FetchNews(url.format(self.key))
         saveNews(response, tag="nyt")
         new = New.objects.get(id=1)
         self.assertEquals(new.tag, "nyt")
-        self.assertNotEquals(new.title, '')
+        self.assertEquals(new.title, 'hello world')
 
-    def test_store_bbc_news(self):
+    @patch('requests.get')
+    def test_store_bbc_news(self, mock_get):
+        mock_get.return_value = Mock(status_code = 200)
+        mock_get.return_value.json.return_value = {"articles": [{"title": "hello world"}]}
         url = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey={}"
         response = FetchNews(url.format(self.key))
         saveNews(response, tag="bbc")
         new = New.objects.get(id=1)
         self.assertEquals(new.tag, "bbc")
-        self.assertNotEquals(new.title, '')
+        self.assertEquals(new.title, 'hello world')
 
-    def test_store_th_news(self):
+    @patch('requests.get')
+    def test_store_th_news(self, mock_get):
+        mock_get.return_value  = Mock(status_code = 200)
+        mock_get.return_value.json.return_value = {"articles": [{"title": "hello world"}]}
         url = "https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey={}"
         response = FetchNews(url.format(self.key))
         saveNews(response, tag="th")
